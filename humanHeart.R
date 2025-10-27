@@ -154,7 +154,9 @@ surveyReferences()
 # This package includes also datasets that can be fetched (downloaded). For studies that generate multiple datasets, 
 # the dataset of interest must be explicitly requested via the path= argument:
 BiocManager::install("scRNAseq")
-library(scrnaseq)
+library(scRNAseq)
+all.ds <- surveyDatasets()
+all.ds
 # By default, array data is loaded as a file-backed DelayedArray from the HDF5Array package.
 # Setting realize.assays=TRUE and/or realize.reduced.dims=TRUE will coerce these to more conventional
 # in-memory representations like ordinary arrays or dgCMatrix objects.
