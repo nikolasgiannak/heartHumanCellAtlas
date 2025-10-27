@@ -67,11 +67,11 @@ sceasy::convertFormat('human-heart-10XV2.loom', from="loom", to="anndata",
 
 
 sceasy::convertFormat("humanHeart10XV2.h5ad", from="anndata", to="seurat",
-                      outFile='filename.rds')
+                      outFile='humanHeart10XV2.rds')
 
 library(Seurat)
 
-humanHeart <- readRDS(file = "filename.rds")
+humanHeart <- readRDS(file = "humanHeart10XV2.rds")
 
 #Recreate Seurat object from scratch
 # Extract the count matrix
@@ -146,7 +146,7 @@ DimPlot(humanHeart2, reduction = "umap")
 
 # Now I will use a publicly available atlas to annotate the cells in the humnaHeart seurat object
 # install.packages("BiocManager")
-BiocManager::install("celldex")
+#BiocManager::install("celldex")
 library(celldex)
 surveyReferences()
 #ref <- fetchReference("hpca", "2024-02-26")
@@ -158,7 +158,7 @@ ref <- celldex::HumanPrimaryCellAtlasData()
  matrix <- LayerData(humanHeart, layer = "data")
 
 # Step 2 - run singleR
- BiocManager::install("SingleR")
+ #BiocManager::install("SingleR")
  library(SingleR)
  res.singleR.main <- SingleR( test = matrix, ref = ref, labels = ref$label.main)
 
@@ -190,7 +190,7 @@ ref <- celldex::HumanPrimaryCellAtlasData()
  
  
  DimPlot(humanHeart, reduction = "umap", group.by = "SingleR.labels", label = TRUE, repel = TRUE) 
- 
+ #
  
  # check fine labels instead of main
  res.singleR.fine <- SingleR( test = matrix, ref = ref, labels = ref$label.fine)
